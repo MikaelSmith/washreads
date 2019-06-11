@@ -1,2 +1,2 @@
 # washreads
-A goodreads plugin for Wash
+A [Goodreads](https://goodreads.com) plugin for [Wash](https://github.com/puppetlabs/wash)
