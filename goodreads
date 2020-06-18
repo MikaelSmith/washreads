@@ -86,7 +86,7 @@ when 'list'
       # Step 4: add state we can use to keep track of what we're interacting with. TODO: use Oj for object serialization?
       count = bookshelf.at('book_count').content.to_i
       shelf = { type: 'shelf', name: name, userid: state['userid'], count: count }
-      children << { name: name, type_id: 'shelf', methods: ['list'], attributes: {meta: meta}, state: JSON.dump(shelf) }
+      children << { name: name, type_id: 'shelf', methods: ['list'], partial_metadata: meta, state: JSON.dump(shelf) }
     end
   elsif state['type'] == 'shelf'
     pages = (state['count']+199) / 200
@@ -103,7 +103,7 @@ when 'list'
           STDERR.puts "Found duplicate title #{name}:\n#{titles[name]}\n#{meta}"
         else
           titles[name] = meta
-          children << { name: name, type_id: 'book', methods: [], attributes: {meta: meta} }
+          children << { name: name, type_id: 'book', methods: [], partial_metadata: meta }
         end
       end
     end
